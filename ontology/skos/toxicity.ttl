@@ -1,0 +1,257 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:ToxicityScheme a skos:ConceptScheme ;
+    skos:prefLabel "Toxicity"@en ;
+    dcterms:description "Animals that a plant is toxic to. NonToxic means the plant is safe for all animals."@en .
+
+botanos:NonToxic a skos:Concept ;
+    skos:prefLabel "Non-Toxic"@en ;
+    skos:definition "Not toxic to any known animals. Safe for all pets."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Human a skos:Concept ;
+    skos:prefLabel "Human"@en ;
+    skos:definition "Toxic to humans."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Dog a skos:Concept ;
+    skos:prefLabel "Dog"@en ;
+    skos:definition "Toxic to dogs."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Cat a skos:Concept ;
+    skos:prefLabel "Cat"@en ;
+    skos:definition "Toxic to cats."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Bird a skos:Concept ;
+    skos:prefLabel "Bird"@en ;
+    skos:definition "Toxic to birds in general."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Parrot a skos:Concept ;
+    skos:prefLabel "Parrot"@en ;
+    skos:definition "Toxic to parrots."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Canary a skos:Concept ;
+    skos:prefLabel "Canary"@en ;
+    skos:definition "Toxic to canaries."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Finch a skos:Concept ;
+    skos:prefLabel "Finch"@en ;
+    skos:definition "Toxic to finches."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Cockatiel a skos:Concept ;
+    skos:prefLabel "Cockatiel"@en ;
+    skos:definition "Toxic to cockatiels."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Budgerigar a skos:Concept ;
+    skos:prefLabel "Budgerigar"@en ;
+    skos:definition "Toxic to budgerigars (parakeets)."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Rabbit a skos:Concept ;
+    skos:prefLabel "Rabbit"@en ;
+    skos:definition "Toxic to rabbits."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:GuineaPig a skos:Concept ;
+    skos:prefLabel "Guinea Pig"@en ;
+    skos:definition "Toxic to guinea pigs."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Hamster a skos:Concept ;
+    skos:prefLabel "Hamster"@en ;
+    skos:definition "Toxic to hamsters."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Gerbil a skos:Concept ;
+    skos:prefLabel "Gerbil"@en ;
+    skos:definition "Toxic to gerbils."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Rat a skos:Concept ;
+    skos:prefLabel "Rat"@en ;
+    skos:definition "Toxic to rats."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Mouse a skos:Concept ;
+    skos:prefLabel "Mouse"@en ;
+    skos:definition "Toxic to mice."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Ferret a skos:Concept ;
+    skos:prefLabel "Ferret"@en ;
+    skos:definition "Toxic to ferrets."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Chinchilla a skos:Concept ;
+    skos:prefLabel "Chinchilla"@en ;
+    skos:definition "Toxic to chinchillas."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Hedgehog a skos:Concept ;
+    skos:prefLabel "Hedgehog"@en ;
+    skos:definition "Toxic to hedgehogs."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:SugarGlider a skos:Concept ;
+    skos:prefLabel "Sugar Glider"@en ;
+    skos:definition "Toxic to sugar gliders."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:FennecFox a skos:Concept ;
+    skos:prefLabel "Fennec Fox"@en ;
+    skos:definition "Toxic to fennec foxes."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Turtle a skos:Concept ;
+    skos:prefLabel "Turtle"@en ;
+    skos:definition "Toxic to turtles."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Tortoise a skos:Concept ;
+    skos:prefLabel "Tortoise"@en ;
+    skos:definition "Toxic to tortoises."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Snake a skos:Concept ;
+    skos:prefLabel "Snake"@en ;
+    skos:definition "Toxic to snakes."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Lizard a skos:Concept ;
+    skos:prefLabel "Lizard"@en ;
+    skos:definition "Toxic to lizards."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Gecko a skos:Concept ;
+    skos:prefLabel "Gecko"@en ;
+    skos:definition "Toxic to geckos."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Iguana a skos:Concept ;
+    skos:prefLabel "Iguana"@en ;
+    skos:definition "Toxic to iguanas."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:BeardedDragon a skos:Concept ;
+    skos:prefLabel "Bearded Dragon"@en ;
+    skos:definition "Toxic to bearded dragons."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Fish a skos:Concept ;
+    skos:prefLabel "Fish"@en ;
+    skos:definition "Toxic to fish."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Goldfish a skos:Concept ;
+    skos:prefLabel "Goldfish"@en ;
+    skos:definition "Toxic to goldfish."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Horse a skos:Concept ;
+    skos:prefLabel "Horse"@en ;
+    skos:definition "Toxic to horses."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Goat a skos:Concept ;
+    skos:prefLabel "Goat"@en ;
+    skos:definition "Toxic to goats."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Sheep a skos:Concept ;
+    skos:prefLabel "Sheep"@en ;
+    skos:definition "Toxic to sheep."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Chicken a skos:Concept ;
+    skos:prefLabel "Chicken"@en ;
+    skos:definition "Toxic to chickens."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Duck a skos:Concept ;
+    skos:prefLabel "Duck"@en ;
+    skos:definition "Toxic to ducks."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Goose a skos:Concept ;
+    skos:prefLabel "Goose"@en ;
+    skos:definition "Toxic to geese."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Donkey a skos:Concept ;
+    skos:prefLabel "Donkey"@en ;
+    skos:definition "Toxic to donkeys."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Cow a skos:Concept ;
+    skos:prefLabel "Cow"@en ;
+    skos:definition "Toxic to cows."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Pig a skos:Concept ;
+    skos:prefLabel "Pig"@en ;
+    skos:definition "Toxic to pigs."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Alpaca a skos:Concept ;
+    skos:prefLabel "Alpaca"@en ;
+    skos:definition "Toxic to alpacas."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Llama a skos:Concept ;
+    skos:prefLabel "Llama"@en ;
+    skos:definition "Toxic to llamas."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Ocelot a skos:Concept ;
+    skos:prefLabel "Ocelot"@en ;
+    skos:definition "Toxic to ocelots."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Armadillo a skos:Concept ;
+    skos:prefLabel "Armadillo"@en ;
+    skos:definition "Toxic to armadillos."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Capybara a skos:Concept ;
+    skos:prefLabel "Capybara"@en ;
+    skos:definition "Toxic to capybaras."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Sloth a skos:Concept ;
+    skos:prefLabel "Sloth"@en ;
+    skos:definition "Toxic to sloths."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Raccoon a skos:Concept ;
+    skos:prefLabel "Raccoon"@en ;
+    skos:definition "Toxic to raccoons."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Skunk a skos:Concept ;
+    skos:prefLabel "Skunk"@en ;
+    skos:definition "Toxic to skunks."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Opossum a skos:Concept ;
+    skos:prefLabel "Opossum"@en ;
+    skos:definition "Toxic to opossums."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Kangaroo a skos:Concept ;
+    skos:prefLabel "Kangaroo"@en ;
+    skos:definition "Toxic to kangaroos."@en ;
+    skos:inScheme botanos:ToxicityScheme .
+
+botanos:Peacock a skos:Concept ;
+    skos:prefLabel "Peacock"@en ;
+    skos:definition "Toxic to peacocks."@en ;
+    skos:inScheme botanos:ToxicityScheme .

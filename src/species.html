@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/src/assets/favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTANOS — Plant Detail</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f0;
+            color: #2d3e2d;
+        }
+        header {
+            background: #2d5a2d;
+            color: white;
+            padding: 1rem 2rem;
+        }
+        header a { color: white; text-decoration: none; }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .plant-photo {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        .plant-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .plant-sci-name {
+            font-style: italic;
+            color: #555;
+            margin: 0.3rem 0 0 0;
+            font-size: 1.1rem;
+        }
+        .care-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .care-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+        }
+        .care-card .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.05em;
+        }
+        .care-card .value {
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
+        }
+        .care-card .value-unit {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .care-card .description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        .source-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .source-box a { color: #2d5a2d; }
+        .external-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .external-links a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #2d5a2d;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .external-links a:hover { background: #1d3a1d; }
+        .loading { text-align: center; padding: 3rem; color: #888; }
+        .error { text-align: center; padding: 3rem; color: #c44; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">&larr; Back to search</a>
+    </header>
+    <div class="container" id="plant-detail">
+        <p class="loading">Loading plant data...</p>
+    </div>
+
+    <script>
+        const ENDPOINT = 'http://localhost:7019';
+        const plantId = new URLSearchParams(window.location.search).get('id');
+
+        if (!plantId) {
+            document.getElementById('plant-detail').innerHTML = '<p class="error">No plant ID specified. Use ?id=Q157417</p>';
+        } else {
+            loadPlantData(plantId);
+        }
+
+        async function loadPlantData(qid) {
+            const plantUri = `http://www.wikidata.org/entity/${qid}`;
+            const sparql = `
+PREFIX botanos: <https://w3id.org/botanos/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT * WHERE {
+  <${plantUri}> a botanos:PlantSpecies ;
+    rdfs:label ?commonName ;
+    botanos:scientificName ?scientificName .
+  OPTIONAL { <${plantUri}> botanos:tempMin ?tempMin }
+  OPTIONAL { <${plantUri}> botanos:tempMax ?tempMax }
+  OPTIONAL { <${plantUri}> botanos:soilPhMin ?soilPhMin }
+  OPTIONAL { <${plantUri}> botanos:soilPhMax ?soilPhMax }
+  OPTIONAL { <${plantUri}> botanos:matureHeightMin ?heightMin }
+  OPTIONAL { <${plantUri}> botanos:matureHeightMax ?heightMax }
+  OPTIONAL { <${plantUri}> botanos:potSizeMin ?potMin }
+  OPTIONAL { <${plantUri}> botanos:potSizeMax ?potMax }
+  OPTIONAL { <${plantUri}> botanos:indoorOutdoor ?indoorOutdoor . ?indoorOutdoor skos:prefLabel ?indoorOutdoorLabel . FILTER(LANG(?indoorOutdoorLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:lightRequirement ?light . ?light skos:prefLabel ?lightLabel . FILTER(LANG(?lightLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:soilHumidity ?soilHum . ?soilHum skos:prefLabel ?soilHumLabel . FILTER(LANG(?soilHumLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:airHumidity ?airHum . ?airHum skos:prefLabel ?airHumLabel . FILTER(LANG(?airHumLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:wateringType ?wateringType . ?wateringType skos:prefLabel ?wateringTypeLabel . FILTER(LANG(?wateringTypeLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:wateringFrequency ?wateringFreq . ?wateringFreq skos:prefLabel ?wateringFreqLabel . FILTER(LANG(?wateringFreqLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:plantCategory ?category . ?category skos:prefLabel ?categoryLabel . FILTER(LANG(?categoryLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:toxicTo ?toxicTo . ?toxicTo skos:prefLabel ?toxicToLabel . FILTER(LANG(?toxicToLabel) = "en") }
+  OPTIONAL { <${plantUri}> botanos:hasSource ?source . ?source dcterms:title ?sourceTitle . OPTIONAL { ?source rdfs:seeAlso ?sourceUrl } }
+}
+LIMIT 1`;
+
+            try {
+                const res = await fetch(`${ENDPOINT}?query=${encodeURIComponent(sparql)}`, {
+                    headers: { 'Accept': 'application/sparql-results+json' }
+                });
+                const data = await res.json();
+                if (data.results.bindings.length === 0) {
+                    document.getElementById('plant-detail').innerHTML = '<p class="error">Plant not found in the database.</p>';
+                    return;
+                }
+                const row = data.results.bindings[0];
+                renderPlant(row, qid);
+                fetchPhoto(qid);
+            } catch (e) {
+                document.getElementById('plant-detail').innerHTML = `<p class="error">Error loading data. Is QLever running on port 7019?<br>${e.message}</p>`;
+            }
+        }
+
+        function renderPlant(row, qid) {
+            const val = (v) => row[v] ? row[v].value : null;
+            const tempMin = val('tempMin');
+            const tempMax = val('tempMax');
+            const soilPhMin = val('soilPhMin');
+            const soilPhMax = val('soilPhMax');
+            const heightMin = val('heightMin');
+            const heightMax = val('heightMax');
+            const potMin = val('potMin');
+            const potMax = val('potMax');
+
+            const categories = [];
+            // Collect all category bindings if multiple
+            // For now, just use the first one from the LIMIT 1 query
+
+            const plantnetUrl = `https://plantnet.org/en/world/flora/?q=${encodeURIComponent(val('scientificName') || '')}`;
+
+            let html = `
+                <img class="plant-photo" id="plant-photo" style="display:none;" alt="${val('commonName') || ''}">
+                <h1 class="plant-name">${val('commonName') || qid}</h1>
+                <p class="plant-sci-name">${val('scientificName') || ''}</p>
+                <div class="care-grid">
+                    ${careCard('Environment', val('indoorOutdoorLabel'))}
+                    ${careCard('Light', val('lightLabel'))}
+                    ${tempMin || tempMax ? careCardRange('Temperature', tempMin, tempMax, '&deg;C') : ''}
+                    ${soilPhMin || soilPhMax ? careCardRange('Soil pH', soilPhMin, soilPhMax, '') : ''}
+                    ${careCard('Soil humidity', val('soilHumLabel'))}
+                    ${careCard('Air humidity', val('airHumLabel'))}
+                    ${careCard('Watering type', val('wateringTypeLabel'))}
+                    ${careCard('Watering frequency', val('wateringFreqLabel'))}
+                    ${heightMin || heightMax ? careCardRange('Mature height', heightMin, heightMax, 'cm') : ''}
+                    ${potMin || potMax ? careCardRange('Pot size', potMin, potMax, 'cm') : ''}
+                    ${careCard('Category', val('categoryLabel'))}
+                    ${careCard('Toxic to', val('toxicToLabel'))}
+                </div>
+                <div class="source-box">
+                    Data source: ${val('sourceTitle') || 'Unknown'}
+                    ${val('sourceUrl') ? ` &mdash; <a href="${val('sourceUrl')}" target="_blank">View source</a>` : ''}
+                    <br><small>Wikidata ID: <a href="https://www.wikidata.org/wiki/${qid}" target="_blank">${qid}</a></small>
+                </div>
+                <div class="external-links">
+                    <a href="${plantnetUrl}" target="_blank">Identify on Pl@ntNet</a>
+                    <a href="https://www.wikidata.org/wiki/${qid}" target="_blank">View on Wikidata</a>
+                </div>`;
+
+            document.getElementById('plant-detail').innerHTML = html;
+        }
+
+        function careCard(label, value) {
+            if (!value) return '';
+            return `<div class="care-card">
+                <div class="label">${label}</div>
+                <div class="value">${value}</div>
+            </div>`;
+        }
+
+        function careCardRange(label, min, max, unit) {
+            let display = '';
+            if (min && max) display = `${min} - ${max}`;
+            else if (min) display = `${min}+`;
+            else if (max) display = `up to ${max}`;
+            if (!display) return '';
+            return `<div class="care-card">
+                <div class="label">${label}</div>
+                <div class="value">${display} <span class="value-unit">${unit}</span></div>
+            </div>`;
+        }
+
+        async function fetchPhoto(qid) {
+            // Fetch image from Wikidata via the Wikimedia Commons API
+            const wikidataUrl = `https://www.wikidata.org/wiki/Special:EntityData/${qid}.ttl`;
+            try {
+                // Use the Wikimedia Commons thumbnail service
+                const photoUrl = `https://commons.wikimedia.org/w/thumb.php?f=`;
+                // First, get the image filename from Wikidata
+                const sparql = `
+SELECT ?image WHERE {
+  <http://www.wikidata.org/entity/${qid}> <http://www.wikidata.org/prop/direct/P18> ?image .
+}
+LIMIT 1`;
+                const res = await fetch(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparql)}`, {
+                    headers: { 'Accept': 'application/sparql-results+json' }
+                });
+                const data = await res.json();
+                if (data.results.bindings.length > 0) {
+                    const imageUrl = data.results.bindings[0].image.value;
+                    // Wikimedia Commons image URLs are in the format http://commons.wikimedia.org/wiki/Special:FilePath/FILENAME
+                    const img = document.getElementById('plant-photo');
+                    img.src = imageUrl.replace('Special:FilePath/', 'Special:FilePath/') + '?width=800';
+                    img.style.display = 'block';
+                }
+            } catch (e) {
+                // Photo is optional — silently fail
+                console.log('Photo fetch failed:', e);
+            }
+        }
+    </script>
+</body>
+</html>

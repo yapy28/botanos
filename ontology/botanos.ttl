@@ -1,0 +1,146 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+<https://w3id.org/botanos/> a owl:Ontology ;
+    rdfs:label "BOTANOS Plant Care Ontology"@en ;
+    dcterms:description "An ontology for plant care requirements, covering temperature, humidity, light, watering, soil, and growth parameters for plant species."@en ;
+    owl:versionInfo "0.1.0" ;
+    dcterms:creator "Gabri" .
+
+# Classes
+
+botanos:PlantSpecies a owl:Class ;
+    rdfs:label "Plant Species"@en ;
+    rdfs:comment "A plant species with associated care requirements."@en .
+
+botanos:Source a owl:Class ;
+    rdfs:label "Source"@en ;
+    rdfs:comment "A source of plant care information, typically a website or article."@en ;
+    rdfs:subClassOf prov:Entity .
+
+# Datatype Properties
+
+botanos:scientificName a owl:DatatypeProperty ;
+    rdfs:label "scientific name"@en ;
+    rdfs:comment "The binomial scientific name of the plant species."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:string .
+
+botanos:commonName a owl:DatatypeProperty ;
+    rdfs:label "common name"@en ;
+    rdfs:comment "A common/vernacular name for the plant species."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:string .
+
+botanos:tempMin a owl:DatatypeProperty ;
+    rdfs:label "minimum temperature"@en ;
+    rdfs:comment "Minimum growing temperature in degrees Celsius."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:tempMax a owl:DatatypeProperty ;
+    rdfs:label "maximum temperature"@en ;
+    rdfs:comment "Maximum growing temperature in degrees Celsius."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:soilPhMin a owl:DatatypeProperty ;
+    rdfs:label "minimum soil pH"@en ;
+    rdfs:comment "Minimum preferred soil pH."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:soilPhMax a owl:DatatypeProperty ;
+    rdfs:label "maximum soil pH"@en ;
+    rdfs:comment "Maximum preferred soil pH."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:matureHeightMin a owl:DatatypeProperty ;
+    rdfs:label "minimum mature height"@en ;
+    rdfs:comment "Minimum mature height in centimeters."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:matureHeightMax a owl:DatatypeProperty ;
+    rdfs:label "maximum mature height"@en ;
+    rdfs:comment "Maximum mature height in centimeters."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:potSizeMin a owl:DatatypeProperty ;
+    rdfs:label "minimum pot size"@en ;
+    rdfs:comment "Minimum recommended pot size in centimeters diameter."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+botanos:potSizeMax a owl:DatatypeProperty ;
+    rdfs:label "maximum pot size"@en ;
+    rdfs:comment "Maximum recommended pot size in centimeters diameter."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range xsd:decimal .
+
+# Object Properties (range: skos:Concept)
+
+botanos:indoorOutdoor a owl:ObjectProperty ;
+    rdfs:label "indoor or outdoor"@en ;
+    rdfs:comment "Whether the plant is typically grown indoors, outdoors, or both."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:soilHumidity a owl:ObjectProperty ;
+    rdfs:label "soil humidity"@en ;
+    rdfs:comment "Preferred soil moisture level."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:airHumidity a owl:ObjectProperty ;
+    rdfs:label "air humidity"@en ;
+    rdfs:comment "Preferred air humidity level."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:lightRequirement a owl:ObjectProperty ;
+    rdfs:label "light requirement"@en ;
+    rdfs:comment "Light exposure requirements for the plant."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:wateringType a owl:ObjectProperty ;
+    rdfs:label "watering type"@en ;
+    rdfs:comment "Method of watering the plant."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:wateringFrequency a owl:ObjectProperty ;
+    rdfs:label "watering frequency"@en ;
+    rdfs:comment "How frequently the plant should be watered."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:plantCategory a owl:ObjectProperty ;
+    rdfs:label "plant category"@en ;
+    rdfs:comment "Informal grouping such as tropical, succulent, fern, etc."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+botanos:toxicTo a owl:ObjectProperty ;
+    rdfs:label "toxic to"@en ;
+    rdfs:comment "Animals that this plant is toxic to. Multi-valued."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range skos:Concept .
+
+# Provenance Properties
+
+botanos:hasSource a owl:ObjectProperty ;
+    rdfs:label "has source"@en ;
+    rdfs:comment "Links a plant species to its data source."@en ;
+    rdfs:domain botanos:PlantSpecies ;
+    rdfs:range botanos:Source ;
+    rdfs:subPropertyOf prov:wasDerivedFrom .

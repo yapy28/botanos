@@ -1,0 +1,27 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:SoilHumidityScheme a skos:ConceptScheme ;
+    skos:prefLabel "Soil Humidity"@en ;
+    dcterms:description "Preferred soil moisture level for a plant."@en .
+
+botanos:DrySoil a skos:Concept ;
+    skos:prefLabel "Dry"@en ;
+    skos:definition "0-30% soil moisture. Soil should dry out between waterings."@en ;
+    skos:inScheme botanos:SoilHumidityScheme .
+
+botanos:ModerateSoil a skos:Concept ;
+    skos:prefLabel "Moderate"@en ;
+    skos:definition "31-50% soil moisture. Allow topsoil to dry between waterings."@en ;
+    skos:inScheme botanos:SoilHumidityScheme .
+
+botanos:MoistSoil a skos:Concept ;
+    skos:prefLabel "Moist"@en ;
+    skos:definition "51-70% soil moisture. Keep soil consistently moist but not soggy."@en ;
+    skos:inScheme botanos:SoilHumidityScheme .
+
+botanos:WetSoil a skos:Concept ;
+    skos:prefLabel "Wet"@en ;
+    skos:definition "71-100% soil moisture. Soil should remain wet at all times."@en ;
+    skos:inScheme botanos:SoilHumidityScheme .

@@ -1,0 +1,109 @@
+{
+  "bindings": [
+    {
+      "variable": "ScientificName_2",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Scientific name" }
+      }
+    },
+    {
+      "variable": "IndoorOutdoor_3",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Indoor / Outdoor" }
+      }
+    },
+    {
+      "variable": "LightRequirement_4",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Light" }
+      }
+    },
+    {
+      "variable": "TempMin_5",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Min temperature (C)" }
+      }
+    },
+    {
+      "variable": "TempMax_6",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Max temperature (C)" }
+      }
+    },
+    {
+      "variable": "SoilPhMin_7",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Min soil pH" }
+      }
+    },
+    {
+      "variable": "SoilPhMax_8",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Max soil pH" }
+      }
+    },
+    {
+      "variable": "SoilHumidity_9",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Soil humidity" }
+      }
+    },
+    {
+      "variable": "AirHumidity_10",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Air humidity" }
+      }
+    },
+    {
+      "variable": "WateringType_11",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Watering type" }
+      }
+    },
+    {
+      "variable": "WateringFrequency_12",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Watering frequency" }
+      }
+    },
+    {
+      "variable": "MatureHeightMin_13",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Min height (cm)" }
+      }
+    },
+    {
+      "variable": "MatureHeightMax_14",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Max height (cm)" }
+      }
+    },
+    {
+      "variable": "PlantCategory_15",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Plant category" }
+      }
+    },
+    {
+      "variable": "ToxicTo_16",
+      "node": {
+        "type": "UserPrompt",
+        "name": { "en": "Toxic to" }
+      }
+    }
+  ]
+}

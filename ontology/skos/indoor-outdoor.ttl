@@ -1,0 +1,17 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:IndoorOutdoorScheme a skos:ConceptScheme ;
+    skos:prefLabel "Indoor / Outdoor"@en ;
+    dcterms:description "Whether a plant is typically grown indoors, outdoors, or both. Plants that can grow in both environments are tagged with both concepts."@en .
+
+botanos:Indoor a skos:Concept ;
+    skos:prefLabel "Indoor"@en ;
+    skos:definition "Grown indoors."@en ;
+    skos:inScheme botanos:IndoorOutdoorScheme .
+
+botanos:Outdoor a skos:Concept ;
+    skos:prefLabel "Outdoor"@en ;
+    skos:definition "Grown outdoors."@en ;
+    skos:inScheme botanos:IndoorOutdoorScheme .

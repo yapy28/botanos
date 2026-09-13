@@ -1,0 +1,49 @@
+prefixes:
+  botanos: "https://w3id.org/botanos/"
+  wd: "http://www.wikidata.org/entity/"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  skos: "http://www.w3.org/2004/02/skos/core#"
+  prov: "http://www.w3.org/ns/prov#"
+  dcterms: "http://purl.org/dc/terms/"
+
+mappings:
+
+  plant:
+    graph: "https://w3id.org/botanos/graph/$(source_name)"
+    sources:
+      - ['data/csv/plants-expanded.csv~csv']
+    s: "http://www.wikidata.org/entity/$(wikidata_id)"
+    po:
+      - [a, botanos:PlantSpecies]
+      - [rdfs:label, $(common_name)]
+      - [botanos:scientificName, $(scientific_name)]
+      - [botanos:commonName, $(common_name)]
+      - [botanos:tempMin, $(temp_min)]
+      - [botanos:tempMax, $(temp_max)]
+      - [botanos:soilPhMin, $(soil_ph_min)]
+      - [botanos:soilPhMax, $(soil_ph_max)]
+      - [botanos:matureHeightMin, $(mature_height_min)]
+      - [botanos:matureHeightMax, $(mature_height_max)]
+      - [botanos:potSizeMin, $(pot_size_min)]
+      - [botanos:potSizeMax, $(pot_size_max)]
+      - [botanos:indoorOutdoor, botanos:$(indoor_outdoor)~iri]
+      - [botanos:soilHumidity, botanos:$(soil_humidity)~iri]
+      - [botanos:airHumidity, botanos:$(air_humidity)~iri]
+      - [botanos:lightRequirement, botanos:$(light)~iri]
+      - [botanos:wateringType, botanos:$(watering_type)~iri]
+      - [botanos:wateringFrequency, botanos:$(watering_freq)~iri]
+      - [botanos:plantCategory, botanos:$(plant_category)~iri]
+      - [botanos:toxicTo, botanos:$(toxic_to)~iri]
+      - [botanos:hasSource, botanos:source/$(source_name)~iri]
+
+  source:
+    graph: "https://w3id.org/botanos/graph/$(source_name)"
+    sources:
+      - ['data/csv/plants-expanded.csv~csv']
+    s: botanos:source/$(source_name)
+    po:
+      - [a, botanos:Source]
+      - [a, prov:Entity]
+      - [dcterms:title, $(source_name)]
+      - [rdfs:seeAlso, $(source_url)~iri]

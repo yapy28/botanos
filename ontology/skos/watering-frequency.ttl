@@ -1,0 +1,22 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:WateringFrequencyScheme a skos:ConceptScheme ;
+    skos:prefLabel "Watering Frequency"@en ;
+    dcterms:description "How frequently a plant should be watered."@en .
+
+botanos:Infrequent a skos:Concept ;
+    skos:prefLabel "Infrequent"@en ;
+    skos:definition "Every 2 weeks or more. Allow soil to dry out significantly between waterings."@en ;
+    skos:inScheme botanos:WateringFrequencyScheme .
+
+botanos:Regular a skos:Concept ;
+    skos:prefLabel "Regular"@en ;
+    skos:definition "Approximately weekly. Check soil moisture and water when the top layer is dry."@en ;
+    skos:inScheme botanos:WateringFrequencyScheme .
+
+botanos:Frequent a skos:Concept ;
+    skos:prefLabel "Frequent"@en ;
+    skos:definition "Every 2-3 days. Keep soil consistently moist."@en ;
+    skos:inScheme botanos:WateringFrequencyScheme .

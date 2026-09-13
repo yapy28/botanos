@@ -1,0 +1,25 @@
+# BOTANOS — docker-compose for local development
+# Run: docker compose up -d
+# QLever SPARQL endpoint: http://localhost:7019
+# QLever UI: http://localhost:8176
+#
+# Alternatively, use the qlever CLI with the Qleverfile (recommended):
+#   pip install qlever
+#   qlever index && qlever start
+
+services:
+  qlever:
+    image: adfreiburg/qlever:latest
+    container_name: botanos-qlever
+    ports:
+      - "7019:7019"
+    volumes:
+      - .:/data
+    working_dir: /data/qlever
+    command: >
+      sh -c "
+        qlever --qleverfile /data/Qleverfile index --no-get-data &&
+        qlever --qleverfile /data/Qleverfile start --no-get-data
+      "
+    environment:
+      - ACCESS_TOKEN=botanos_local_dev

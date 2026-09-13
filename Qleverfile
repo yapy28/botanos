@@ -1,0 +1,25 @@
+[data]
+NAME: botanos
+FORMAT: nq
+DESCRIPTION: BOTANOS plant care database — species, care requirements, and provenance
+
+[index]
+INPUT_FILES: plants.nq
+CAT_INPUT_FILES: cat plants.nq
+PARALLEL_PARSING: false
+VOCABULARY_TYPE: on-disk-compressed
+TEXT_INDEX: none
+
+[server]
+PORT: 7019
+ACCESS_TOKEN: botanos_local_dev
+MEMORY_FOR_QUERIES: 256M
+TIMEOUT: 30s
+CACHE_MAX_SIZE: 128M
+
+[runtime]
+SYSTEM: docker
+IMAGE: docker.io/adfreiburg/qlever:latest
+
+[ui]
+UI_PORT: 8176

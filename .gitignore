@@ -1,0 +1,18 @@
+# QLever index and log files (in qlever/)
+qlever/botanos.*
+qlever/qlever-botanos.*
+qlever/plants.nq
+
+# Generated RDF
+data/rdf/
+
+# Expanded CSV (generated from plants.csv)
+data/csv/plants-expanded.csv
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

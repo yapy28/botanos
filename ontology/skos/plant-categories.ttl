@@ -1,0 +1,67 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:PlantCategoryScheme a skos:ConceptScheme ;
+    skos:prefLabel "Plant Categories"@en ;
+    dcterms:description "Informal plant groupings for browsing, cutting across formal taxonomy."@en .
+
+botanos:Tropical a skos:Concept ;
+    skos:prefLabel "Tropical"@en ;
+    skos:definition "Plants originating from tropical climates."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Succulent a skos:Concept ;
+    skos:prefLabel "Succulent"@en ;
+    skos:definition "Plants with thick, fleshy parts adapted to store water."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Cactus a skos:Concept ;
+    skos:prefLabel "Cactus"@en ;
+    skos:definition "Spiny succulents in the family Cactaceae."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Fern a skos:Concept ;
+    skos:prefLabel "Fern"@en ;
+    skos:definition "Vascular plants that reproduce via spores, typically shade-loving."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Vine a skos:Concept ;
+    skos:prefLabel "Vine / Climber"@en ;
+    skos:definition "Trailing or climbing plants that grow long stems."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Herb a skos:Concept ;
+    skos:prefLabel "Herb"@en ;
+    skos:definition "Non-woody plants, often aromatic or culinary."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Tree a skos:Concept ;
+    skos:prefLabel "Tree"@en ;
+    skos:definition "Tall woody plants with a single trunk."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Shrub a skos:Concept ;
+    skos:prefLabel "Shrub"@en ;
+    skos:definition "Woody plants smaller than trees, typically with multiple stems."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Bulb a skos:Concept ;
+    skos:prefLabel "Bulb"@en ;
+    skos:definition "Plants that grow from bulbs or corms."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Carnivorous a skos:Concept ;
+    skos:prefLabel "Carnivorous"@en ;
+    skos:definition "Plants that trap and digest insects."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Aquatic a skos:Concept ;
+    skos:prefLabel "Aquatic"@en ;
+    skos:definition "Plants that grow in or on water."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .
+
+botanos:Epiphyte a skos:Concept ;
+    skos:prefLabel "Epiphyte"@en ;
+    skos:definition "Plants that grow on other plants, not parasitic."@en ;
+    skos:inScheme botanos:PlantCategoryScheme .

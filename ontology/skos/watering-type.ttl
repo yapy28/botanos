@@ -1,0 +1,32 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:WateringTypeScheme a skos:ConceptScheme ;
+    skos:prefLabel "Watering Type"@en ;
+    dcterms:description "Method of applying water to the plant."@en .
+
+botanos:Drip a skos:Concept ;
+    skos:prefLabel "Drip"@en ;
+    skos:definition "Slow drip irrigation, delivering water directly to the root zone."@en ;
+    skos:inScheme botanos:WateringTypeScheme .
+
+botanos:Pour a skos:Concept ;
+    skos:prefLabel "Pour"@en ;
+    skos:definition "Pour water onto the soil surface until it drains from the bottom."@en ;
+    skos:inScheme botanos:WateringTypeScheme .
+
+botanos:Spray a skos:Concept ;
+    skos:prefLabel "Spray"@en ;
+    skos:definition "Mist or spray the plant foliage and soil surface."@en ;
+    skos:inScheme botanos:WateringTypeScheme .
+
+botanos:BottomWatering a skos:Concept ;
+    skos:prefLabel "Bottom Watering"@en ;
+    skos:definition "Water from the bottom by placing the pot in a tray of water, allowing the soil to absorb moisture upward."@en ;
+    skos:inScheme botanos:WateringTypeScheme .
+
+botanos:Soak a skos:Concept ;
+    skos:prefLabel "Soak"@en ;
+    skos:definition "Submerge or thoroughly soak the pot, then allow to drain completely."@en ;
+    skos:inScheme botanos:WateringTypeScheme .

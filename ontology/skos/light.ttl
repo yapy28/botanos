@@ -1,0 +1,27 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:LightScheme a skos:ConceptScheme ;
+    skos:prefLabel "Light Requirements"@en ;
+    dcterms:description "Light exposure requirements for plant growth."@en .
+
+botanos:FullSun a skos:Concept ;
+    skos:prefLabel "Full Sun"@en ;
+    skos:definition "6+ hours of direct sunlight per day."@en ;
+    skos:inScheme botanos:LightScheme .
+
+botanos:BrightIndirect a skos:Concept ;
+    skos:prefLabel "Bright Indirect"@en ;
+    skos:definition "Bright light without direct sun exposure. Near a window but shielded from direct rays."@en ;
+    skos:inScheme botanos:LightScheme .
+
+botanos:PartialShade a skos:Concept ;
+    skos:prefLabel "Partial Shade"@en ;
+    skos:definition "3-6 hours of sun, with shade for part of the day."@en ;
+    skos:inScheme botanos:LightScheme .
+
+botanos:FullShade a skos:Concept ;
+    skos:prefLabel "Full Shade"@en ;
+    skos:definition "Less than 3 hours of direct sun. Tolerates deep shade."@en ;
+    skos:inScheme botanos:LightScheme .

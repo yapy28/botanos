@@ -1,0 +1,342 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+
+# Property declarations — needed by Sparnatural-form to find properties as subjects
+
+botanos:PlantSpecies a owl:Class ;
+    rdfs:label "Plant Species"@en .
+
+botanos:commonName a owl:DatatypeProperty ;
+    rdfs:label "common name"@en .
+
+botanos:scientificName a owl:DatatypeProperty ;
+    rdfs:label "scientific name"@en .
+
+botanos:tempMin a owl:DatatypeProperty ;
+    rdfs:label "minimum temperature"@en .
+
+botanos:tempMax a owl:DatatypeProperty ;
+    rdfs:label "maximum temperature"@en .
+
+botanos:soilPhMin a owl:DatatypeProperty ;
+    rdfs:label "minimum soil pH"@en .
+
+botanos:soilPhMax a owl:DatatypeProperty ;
+    rdfs:label "maximum soil pH"@en .
+
+botanos:matureHeightMin a owl:DatatypeProperty ;
+    rdfs:label "minimum mature height"@en .
+
+botanos:matureHeightMax a owl:DatatypeProperty ;
+    rdfs:label "maximum mature height"@en .
+
+botanos:potSizeMin a owl:DatatypeProperty ;
+    rdfs:label "minimum pot size"@en .
+
+botanos:potSizeMax a owl:DatatypeProperty ;
+    rdfs:label "maximum pot size"@en .
+
+botanos:indoorOutdoor a owl:ObjectProperty ;
+    rdfs:label "indoor or outdoor"@en .
+
+botanos:soilHumidity a owl:ObjectProperty ;
+    rdfs:label "soil humidity"@en .
+
+botanos:airHumidity a owl:ObjectProperty ;
+    rdfs:label "air humidity"@en .
+
+botanos:lightRequirement a owl:ObjectProperty ;
+    rdfs:label "light requirement"@en .
+
+botanos:wateringType a owl:ObjectProperty ;
+    rdfs:label "watering type"@en .
+
+botanos:wateringFrequency a owl:ObjectProperty ;
+    rdfs:label "watering frequency"@en .
+
+botanos:plantCategory a owl:ObjectProperty ;
+    rdfs:label "plant category"@en .
+
+botanos:hasSource a owl:ObjectProperty ;
+    rdfs:label "has source"@en .
+
+botanos:toxicTo a owl:ObjectProperty ;
+    rdfs:label "toxic to"@en .
+
+# NodeShape for PlantSpecies — serves as both Sparnatural config and pySHACL validation
+
+botanos:PlantSpeciesShape a sh:NodeShape ;
+    sh:targetClass botanos:PlantSpecies ;
+    rdfs:label "Plant Species"@en ;
+    sh:description "Search for plant species by care requirements."@en ;
+    sh:order "1"^^xsd:integer ;
+    volipi:iconName "fa-solid fa-leaf" ;
+    sh:property
+        botanos:PS_commonName ,
+        botanos:PS_scientificName ,
+        botanos:PS_indoorOutdoor ,
+        botanos:PS_lightRequirement ,
+        botanos:PS_tempMin ,
+        botanos:PS_tempMax ,
+        botanos:PS_soilPhMin ,
+        botanos:PS_soilPhMax ,
+        botanos:PS_soilHumidity ,
+        botanos:PS_airHumidity ,
+        botanos:PS_wateringType ,
+        botanos:PS_wateringFrequency ,
+        botanos:PS_matureHeightMin ,
+        botanos:PS_matureHeightMax ,
+        botanos:PS_potSizeMin ,
+        botanos:PS_potSizeMax ,
+        botanos:PS_plantCategory ,
+        botanos:PS_toxicTo .
+
+# Identity properties
+
+botanos:PS_commonName a sh:PropertyShape ;
+    sh:path botanos:commonName ;
+    sh:name "common name"@en ;
+    sh:description "The common name of the plant."@en ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:SearchProperty ;
+    dash:propertyRole dash:LabelRole ;
+    sh:order "1"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_scientificName a sh:PropertyShape ;
+    sh:path botanos:scientificName ;
+    sh:name "scientific name"@en ;
+    sh:description "The binomial scientific name."@en ;
+    sh:datatype xsd:string ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:SearchProperty ;
+    sh:order "2"^^xsd:integer ;
+    sh:minCount 1 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Environment properties
+
+botanos:PS_indoorOutdoor a sh:PropertyShape ;
+    sh:path botanos:indoorOutdoor ;
+    sh:name "indoor or outdoor"@en ;
+    sh:description "Whether the plant grows indoors, outdoors, or both."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "3"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_lightRequirement a sh:PropertyShape ;
+    sh:path botanos:lightRequirement ;
+    sh:name "light"@en ;
+    sh:description "Light exposure requirements."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "4"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Temperature (numeric ranges)
+
+botanos:PS_tempMin a sh:PropertyShape ;
+    sh:path botanos:tempMin ;
+    sh:name "minimum temperature (C)"@en ;
+    sh:description "Minimum growing temperature in degrees Celsius."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "5"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_tempMax a sh:PropertyShape ;
+    sh:path botanos:tempMax ;
+    sh:name "maximum temperature (C)"@en ;
+    sh:description "Maximum growing temperature in degrees Celsius."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "6"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Soil pH (numeric ranges)
+
+botanos:PS_soilPhMin a sh:PropertyShape ;
+    sh:path botanos:soilPhMin ;
+    sh:name "minimum soil pH"@en ;
+    sh:description "Minimum preferred soil pH."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "7"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_soilPhMax a sh:PropertyShape ;
+    sh:path botanos:soilPhMax ;
+    sh:name "maximum soil pH"@en ;
+    sh:description "Maximum preferred soil pH."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "8"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Humidity (SKOS concepts)
+
+botanos:PS_soilHumidity a sh:PropertyShape ;
+    sh:path botanos:soilHumidity ;
+    sh:name "soil humidity"@en ;
+    sh:description "Preferred soil moisture level."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "9"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_airHumidity a sh:PropertyShape ;
+    sh:path botanos:airHumidity ;
+    sh:name "air humidity"@en ;
+    sh:description "Preferred air humidity level."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "10"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Watering (SKOS concepts)
+
+botanos:PS_wateringType a sh:PropertyShape ;
+    sh:path botanos:wateringType ;
+    sh:name "watering type"@en ;
+    sh:description "Method of watering."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "11"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_wateringFrequency a sh:PropertyShape ;
+    sh:path botanos:wateringFrequency ;
+    sh:name "watering frequency"@en ;
+    sh:description "How often to water."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "12"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Size (numeric ranges)
+
+botanos:PS_matureHeightMin a sh:PropertyShape ;
+    sh:path botanos:matureHeightMin ;
+    sh:name "minimum mature height (cm)"@en ;
+    sh:description "Minimum mature height in centimeters."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "13"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_matureHeightMax a sh:PropertyShape ;
+    sh:path botanos:matureHeightMax ;
+    sh:name "maximum mature height (cm)"@en ;
+    sh:description "Maximum mature height in centimeters."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "14"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_potSizeMin a sh:PropertyShape ;
+    sh:path botanos:potSizeMin ;
+    sh:name "minimum pot size (cm)"@en ;
+    sh:description "Minimum recommended pot diameter in centimeters."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "15"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_potSizeMax a sh:PropertyShape ;
+    sh:path botanos:potSizeMax ;
+    sh:name "maximum pot size (cm)"@en ;
+    sh:description "Maximum recommended pot diameter in centimeters."@en ;
+    sh:datatype xsd:decimal ;
+    sh:nodeKind sh:Literal ;
+    dash:searchWidget core:NumberProperty ;
+    sh:order "16"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+# Categories (SKOS concept, multi-valued)
+
+botanos:PS_plantCategory a sh:PropertyShape ;
+    sh:path botanos:plantCategory ;
+    sh:name "plant category"@en ;
+    sh:description "Informal grouping: tropical, succulent, fern, etc."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "17"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .
+
+botanos:PS_toxicTo a sh:PropertyShape ;
+    sh:path botanos:toxicTo ;
+    sh:name "toxic to"@en ;
+    sh:description "Animals that this plant is toxic to. Select Non-Toxic for pet-safe plants."@en ;
+    sh:nodeKind sh:IRI ;
+    sh:class skos:Concept ;
+    dash:searchWidget core:ListProperty ;
+    datasources:datasource datasources:list_skospreflabel_alpha ;
+    sh:order "18"^^xsd:integer ;
+    sh:minCount 0 ;
+    core:enableOptional "false"^^xsd:boolean ;
+    core:enableNegation "false"^^xsd:boolean .

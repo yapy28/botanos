@@ -1,0 +1,204 @@
+{
+  "distinct": true,
+  "variables": [
+    { "termType": "Variable", "value": "PlantSpecies_1" },
+    { "termType": "Variable", "value": "ScientificName_2" },
+    { "termType": "Variable", "value": "IndoorOutdoor_3" },
+    { "termType": "Variable", "value": "LightRequirement_4" },
+    { "termType": "Variable", "value": "TempMin_5" },
+    { "termType": "Variable", "value": "TempMax_6" },
+    { "termType": "Variable", "value": "SoilPhMin_7" },
+    { "termType": "Variable", "value": "SoilPhMax_8" },
+    { "termType": "Variable", "value": "SoilHumidity_9" },
+    { "termType": "Variable", "value": "AirHumidity_10" },
+    { "termType": "Variable", "value": "WateringType_11" },
+    { "termType": "Variable", "value": "WateringFrequency_12" },
+    { "termType": "Variable", "value": "MatureHeightMin_13" },
+    { "termType": "Variable", "value": "MatureHeightMax_14" },
+    { "termType": "Variable", "value": "PlantCategory_15" },
+    { "termType": "Variable", "value": "ToxicTo_16" }
+  ],
+  "order": null,
+  "branches": [
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/scientificName",
+        "o": "ScientificName_2",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#string",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/indoorOutdoor",
+        "o": "IndoorOutdoor_3",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/lightRequirement",
+        "o": "LightRequirement_4",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/tempMin",
+        "o": "TempMin_5",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#decimal",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/tempMax",
+        "o": "TempMax_6",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#decimal",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/soilPhMin",
+        "o": "SoilPhMin_7",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#decimal",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/soilPhMax",
+        "o": "SoilPhMax_8",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#decimal",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/soilHumidity",
+        "o": "SoilHumidity_9",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/airHumidity",
+        "o": "AirHumidity_10",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/wateringType",
+        "o": "WateringType_11",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/wateringFrequency",
+        "o": "WateringFrequency_12",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/matureHeightMin",
+        "o": "MatureHeightMin_13",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#decimal",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/matureHeightMax",
+        "o": "MatureHeightMax_14",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2001/XMLSchema#decimal",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/plantCategory",
+        "o": "PlantCategory_15",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    },
+    {
+      "line": {
+        "s": "PlantSpecies_1",
+        "p": "https://w3id.org/botanos/toxicTo",
+        "o": "ToxicTo_16",
+        "sType": "https://w3id.org/botanos/PlantSpecies",
+        "oType": "http://www.w3.org/2004/02/skos/core#Concept",
+        "values": []
+      },
+      "children": [],
+      "optional": true
+    }
+  ]
+}

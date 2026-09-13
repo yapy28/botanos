@@ -1,0 +1,27 @@
+@prefix botanos: <https://w3id.org/botanos/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+botanos:AirHumidityScheme a skos:ConceptScheme ;
+    skos:prefLabel "Air Humidity"@en ;
+    dcterms:description "Preferred relative air humidity level for a plant."@en .
+
+botanos:LowHumidity a skos:Concept ;
+    skos:prefLabel "Low"@en ;
+    skos:definition "0-40% relative humidity. Tolerates dry air."@en ;
+    skos:inScheme botanos:AirHumidityScheme .
+
+botanos:MediumHumidity a skos:Concept ;
+    skos:prefLabel "Medium"@en ;
+    skos:definition "41-60% relative humidity. Average household humidity."@en ;
+    skos:inScheme botanos:AirHumidityScheme .
+
+botanos:HighHumidity a skos:Concept ;
+    skos:prefLabel "High"@en ;
+    skos:definition "61-80% relative humidity. Needs humid conditions."@en ;
+    skos:inScheme botanos:AirHumidityScheme .
+
+botanos:VeryHighHumidity a skos:Concept ;
+    skos:prefLabel "Very High"@en ;
+    skos:definition "81-100% relative humidity. Requires near-saturated air."@en ;
+    skos:inScheme botanos:AirHumidityScheme .
