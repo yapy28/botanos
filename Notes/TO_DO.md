@@ -37,6 +37,8 @@ These were discussed and explicitly deferred during the design phase. Build them
 - **Auth / backend app layer**: A thin backend (Node/Python/Go) handling auth, rate limiting, moderation, SPARQL Update proxying. Currently the frontend talks directly to QLever's SPARQL endpoint.
 - **Personal plant tracking**: "My Monstera in my kitchen" — users create instances of species they own, track watering schedules, get reminders. Separate data model from species-level care data.
 - **Automated scraping**: Replace manual CSV transcription with automated scrapers. Will need full PROV-O (activities, agents, timestamps) for trust tracking.
-- **Formal taxonomy browse in UI**: Wikidata P171 chain (species → genus → family → order) is stored locally but not exposed in the UI. Add a Sparnatural tree widget for scientific browsing when needed.
+- **Formal taxonomy browse in UI**: Pull the full P171 (parent taxon) chain from Wikidata for each species (species -> genus -> family -> order -> class) and store it locally. Add a Sparnatural tree widget for scientific browsing when needed.
+- **Multilingual common names**: Pull P1843 (taxon common name) from Wikidata for each species. Store as additional labels (e.g., `rdfs:label` or `skos:altLabel` per language) so the species page can show names in 10+ languages (English, German, French, Spanish, Japanese, Chinese, Thai, Finnish, Dutch, etc.).
+- **Plant images from Wikidata**: Pull P18 (image) from Wikidata for each species. Store the Wikimedia Commons filename and construct the URL as `https://commons.wikimedia.org/wiki/Special:FilePath/{filename}`. Display on species cards and detail pages. Not yet in the CSV -- needs a new `image` column.
 - **Validation dashboard**: A report page showing SHACL violations, missing data warnings, and data quality metrics. pySHACL output rendered as a readable report.
 - **w3id.org content negotiation**: See enhancement section above.
